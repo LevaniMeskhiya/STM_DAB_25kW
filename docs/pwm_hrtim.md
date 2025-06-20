@@ -95,3 +95,33 @@ The control library supports several modulation modes, selected by the `ModTecni
 
 The timers run in continuous up-counting mode and use the master compare events to reset their counters, realising the desired phase shift between primary and secondary bridges.
 
+
+## Register Configuration
+
+`MX_HRTIM1_Init()` in `Core/Src/hrtim.c` programs the master and all four slave timers. The master timer defines the base period and generates compare events used to phase shift the legs.
+
+### Counter Reset Sources
+
+| Timer | Reset trigger |
+|-------|---------------|
+| **Timer A** | Master period (`HRTIM_TIMRESETTRIGGER_MASTER_PER`) |
+| **Timer B** | Master compare 1 (`HRTIM_TIMRESETTRIGGER_MASTER_CMP1`) |
+| **Timer C** | Master compare 2 (`HRTIM_TIMRESETTRIGGER_MASTER_CMP2`) |
+| **Timer D** | Master compare 3 (`HRTIM_TIMRESETTRIGGER_MASTER_CMP3`) |
+
+### Output Set/Reset Sources
+
+The high-side outputs use Channel 1 of each timer. Their events are configured as:
+
+```
+Timer A: SetSource = MASTERPER | TIMPER,  ResetSource = TIMCMP1
+Timer B: SetSource = MASTERCMP1 | TIMPER, ResetSource = TIMCMP1
+Timer C: SetSource = MASTERCMP2 | TIMPER, ResetSource = TIMCMP1
+Timer D: SetSource = MASTERCMP3 | TIMPER, ResetSource = TIMCMP1
+```
+
+Complementary channels (TA2-TD2) have `SetSource = NONE` and `ResetSource = NONE` so they simply mirror the main channel with dead-time insertion.
+
+### ADC Trigger
+
+The master compare 4 event (`HRTIM_ADCTRIGGEREVENT13_MASTER_CMP4`) triggers ADC conversions to synchronise sampling with the PWM period.
