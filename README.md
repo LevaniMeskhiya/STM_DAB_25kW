@@ -27,3 +27,4 @@ Additional documentation can be found in the [`docs/`](docs/) directory.
 | [`hardware_overview.md`](docs/hardware_overview.md) | Overview of the converter hardware. |
 | [`software_architecture.md`](docs/software_architecture.md) | High-level explanation of the firmware structure. |
 | [`build_instructions.md`](docs/build_instructions.md) | Steps to build the project with STM32CubeIDE. |
+| [`build_and_flash.md`](docs/build_and_flash.md) | How to generate code, build, and flash the firmware. |
