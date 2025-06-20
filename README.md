@@ -28,3 +28,9 @@ Additional documentation can be found in the [`docs/`](docs/) directory.
 | [`software_architecture.md`](docs/software_architecture.md) | High-level explanation of the firmware structure. |
 | [`build_instructions.md`](docs/build_instructions.md) | Steps to build the project with STM32CubeIDE. |
 | [`build_and_flash.md`](docs/build_and_flash.md) | How to generate code, build, and flash the firmware. |
+| [`software_layers.md`](docs/software_layers.md) | Overview of HAL, middleware and application layers. |
+| [`interrupts.md`](docs/interrupts.md) | Interrupt mapping and handler list. |
+| [`configuration.md`](docs/configuration.md) | Important configuration macros. |
+| [`data_structures.md`](docs/data_structures.md) | Summary of key structs. |
+| [`state_machine.md`](docs/state_machine.md) | DAB state machine description. |
+| [`pwm_hrtim.md`](docs/pwm_hrtim.md) | HRTIM PWM configuration details. |
