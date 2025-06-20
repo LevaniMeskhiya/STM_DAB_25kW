@@ -4,18 +4,18 @@ This document summarizes the converter state machine implemented in the digital 
 
 ## States
 
-- **`DPC_FSM_WAIT`** – persistent wait state after clearing faults. Normally transitions to `IDLE` once the wait time expires.
-- **`DPC_FSM_IDLE`** – idle state when input conditions are valid. From here the machine enters `INIT` or `STOP` on a fault.
-- **`DPC_FSM_INIT`** – short initialization step between `IDLE` and `START`. Initializes control variables.
-- **`DPC_FSM_START`** – performs the converter start‑up. When the bus reference voltage is reached the next state is `RUN`.
-- **`DPC_FSM_RUN`** – normal running state. Faults or stop commands move the machine to `STOP`.
-- **`DPC_FSM_STOP`** – pass‑through state that disables PWM outputs. Subsequent state is `ERROR` or `FAULT` depending on the condition.
-- **`DPC_FSM_ERROR`** – indicates an invalid state or recoverable error. Once cleared the machine goes back to `WAIT`.
-- **`DPC_FSM_FAULT`** – persistent state entered after a fault. Recovery typically requires a system reset.
+- **`DPC_FSM_WAIT`** - persistent wait state after clearing faults. Normally transitions to `IDLE` once the wait time expires.
+- **`DPC_FSM_IDLE`** - idle state when input conditions are valid. From here the machine enters `INIT` or `STOP` on a fault.
+- **`DPC_FSM_INIT`** - short initialization step between `IDLE` and `START`. Initializes control variables.
+- **`DPC_FSM_START`** - performs the converter start-up. When the bus reference voltage is reached the next state is `RUN`.
+- **`DPC_FSM_RUN`** - normal running state. Faults or stop commands move the machine to `STOP`.
+- **`DPC_FSM_STOP`** - pass-through state that disables PWM outputs. Subsequent state is `ERROR` or `FAULT` depending on the condition.
+- **`DPC_FSM_ERROR`** - indicates an invalid state or recoverable error. Once cleared the machine goes back to `WAIT`.
+- **`DPC_FSM_FAULT`** - persistent state entered after a fault. Recovery typically requires a system reset.
 
 ## Typical Transitions
 
-A typical power‑up sequence progresses through the following states:
+A typical power-up sequence progresses through the following states:
 
 ```
 IDLE -> INIT -> START -> RUN
