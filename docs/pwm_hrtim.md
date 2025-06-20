@@ -125,4 +125,3 @@ Complementary channels (TA2-TD2) have `SetSource = NONE` and `ResetSource = NONE
 ### ADC Trigger
 
 The master compare 4 event (`HRTIM_ADCTRIGGEREVENT13_MASTER_CMP4`) triggers ADC conversions to synchronise sampling with the PWM period.
-
